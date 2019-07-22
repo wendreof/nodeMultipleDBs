@@ -1,13 +1,14 @@
 const ICrud = require('./interfaces/interfaceCrud');
 
 class Postgres extends ICrud {
-    constructor() {
-        super()
-    }
+  constructor() {
+    super();
+  }
 
-    create(item) {
-        console.log('O item foi salvo em Postgres')
-    }
+  create(item) {
+    console.log('O item foi salvo em Postgres');
+  }
 }
 
-module.exports = Postgres
+module.exports = Postgres;
+
