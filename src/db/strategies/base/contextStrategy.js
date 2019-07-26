@@ -19,7 +19,16 @@ class ContextStrategy extends ICrud {
   }
 
   delete(id) {
-    return this._database.update(id);
+    // eslint-disable-next-line no-underscore-dangle
+    return this._database.delete(id);
+  }
+
+  isConnected() {
+    return this._database.isConnected();
+  }
+
+  connect(){
+    return this._database.connect();
   }
 }
 

@@ -2,11 +2,20 @@
   "name": "07-multiDB",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts" : {
+    "test": "mocha src/tests/*.js",
+    "test:watch": "mocha src/tests/*.js -w"
+  },
   "repository": "git@github.com:wendreof/nodeMultipleDBs.git",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "mocha": "^6.2.0"
+  },
+  "dependencies": {
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.38.0"
   }
 }
