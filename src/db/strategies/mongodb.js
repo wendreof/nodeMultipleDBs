@@ -67,6 +67,11 @@ class MongoDB extends ICrud {
     read(item, skip = 0, limit = 10) {
         return this._herois.find(item).skip(skip).limit(limit)
     }
+
+    update(id, item){
+        console.log('id', id)
+        return this._herois.updateOne({_id: id}, {$set: item})
+    }
 }
 
 module.exports = MongoDB;
