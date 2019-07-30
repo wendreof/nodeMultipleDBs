@@ -50,10 +50,14 @@ describe('MongoDB Suíte de testes', function () {
     })
 
     it('Atualizar', async() => {
-        console.log('MOCK_HEROI_ID', MOCK_HEROI_ID)
         const result = await context.update(MOCK_HEROI_ID, {
             nome: 'Perna longa'
         })
         assert.deepEqual(result.nModified, 1)
+    })
+
+    it('Remover', async() => {
+        const result = await context.delete(MOCK_HEROI_ID)
+        assert.deepEqual(result.n, 1)
     })
 })
