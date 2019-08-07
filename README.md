@@ -1,3 +1,6 @@
+#run test and UP SERVER on port 5000
+sudo yarn add 
+
 #postgres
 sudo docker run \
     --name postgres5 \
@@ -37,6 +40,7 @@ docker run \
 docker ps 
 docker exec -it postgres /bin/bash
 
+#others
 docker exec -it mongodb \
     mongo --host localhost -u admin -p admin --authenticationDatabase admin \
     --eval "db.getSiblingDB('herois').createUser({user: 'wlf',  pwd: 'wlf', roles: [{role: 'readWrite', db: 'herois'}]})"
@@ -86,4 +90,4 @@ docker exec -it 2199279585d1 \
     //delete
     db.herois.remove({nome: 'Lanterna Verde'})
     
-# nodeMultipleDBs
+
