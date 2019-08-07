@@ -1,5 +1,8 @@
 const BaseRoute = require('./base/baseRoute')
 const Joi = require('joi')
+const failAction = (request, headers, erro) => {
+    throw erro;
+}
 
 class HeroRoutes extends BaseRoute {
     constructor(db) {
@@ -17,9 +20,7 @@ class HeroRoutes extends BaseRoute {
                     //headers -> header
                     //params -> na URL: id
                     // query -> ?skip=10&limit=10-
-                    failAction: (request, headers, erro) => {
-                        throw erro;
-                    },
+                    failAction,
                     query: {
                         skip: Joi.number().integer().default(0),
                         limit: Joi.number().integer().default(10),
@@ -33,7 +34,7 @@ class HeroRoutes extends BaseRoute {
                         skip,
                         limit,
                         nome
-                    } = request.query
+                    } = request.query;
 
                     const query = {
                         nome: {
@@ -41,7 +42,7 @@ class HeroRoutes extends BaseRoute {
                         }
                     }
 
-                    return this.db.read(nome? query : {}, skip, limit)
+                    return this.db.read(nome ? query : {}, skip, limit)
                 } catch (e) {
                     console.log('Deu ruim', e)
                     return 'Erro interno no servidor'
@@ -49,6 +50,38 @@ class HeroRoutes extends BaseRoute {
             }
         }
     }
+
+    create() {
+        return {
+            path: '/herois',
+            method: 'POST',
+            config: {
+                validate: {
+                    failAction,
+                    payload: {
+                        nome: Joi.string().required().min(3).max(100),
+                        poder: Joi.string().required().min(2).max(100)
+                    }
+                }
+            },
+            handler: async (request) => {
+                try {
+                    const {nome, poder} = request.payload
+                    const result = await this.db.create({nome, poder})
+                    console.log('result', result)
+                    return {
+                        message: `Heroi cadastrado com sucesso!`,
+                        _id: result._id
+                    }
+                } catch (e) {
+                    console.log('DEU RUIM', e)
+                    return `Internal Error!`
+                }
+
+            }
+        }
+    }
+
 }
 
 module.exports = HeroRoutes
