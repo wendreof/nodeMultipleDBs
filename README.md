@@ -1,5 +1,7 @@
+# after starting all containers below
+
 #run test and UP SERVER on port 5000
-sudo yarn add 
+sudo yarn test
 
 #postgres
 sudo docker run \
