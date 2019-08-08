@@ -122,7 +122,7 @@ describe('Suíte de teste da API Heroes', function () {
     })
 
     it('Atualizar PATCH - /herois/:id - não deve atualizar com ID incorreto', async () => {
-        const _id = `${MOCK_ID}01`
+        const _id = `5d3bcb5a06a50857a2edc6fb`
         const expected = {
             poder: 'Super Mira'
         }
