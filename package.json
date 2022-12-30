@@ -11,7 +11,7 @@
   "devDependencies": {
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
-    "mocha": "^6.2.0"
+    "mocha": "^10.2.0"
   },
   "dependencies": {
     "boom": "^7.3.0",
